@@ -2,6 +2,7 @@
 import React, { useState } from 'react';
 import { Container, Paper, TextField, Typography, Button, Stack, Avatar, IconButton } from '@mui/material';
 import { CameraAlt as CameraAltIcon } from '@mui/icons-material';
+import VisuallyHiddenInput from '../components/styles/StyledCompoents.jsx';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -53,8 +54,22 @@ const Login = () => {
                     objectFit: "contain"
                   }}
                 />
-                <IconButton sx={{ position: 'absolute', bottom: 0, right: 0 }}>
+                <IconButton
+                  component="label" 
+                  sx={{
+                    position: 'absolute',
+                    bottom: 0,
+                    right: 0,
+                    color: 'white',
+                    bgcolor: "rgba(0, 0, 0, 0.5)",
+                    "&:hover": {
+                      bgcolor: "rgba(0, 0, 0, 0.7)", 
+                    },
+                    component: "label",
+                  }}
+                >
                   <CameraAltIcon />
+                  <VisuallyHiddenInput type="file" /> 
                 </IconButton>
               </Stack>
 
