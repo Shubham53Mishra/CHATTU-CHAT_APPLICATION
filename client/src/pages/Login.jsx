@@ -6,12 +6,30 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <Container component="main" maxWidth={false} sx={{ width: '100%' }}> {/* Full-width container */}
-      <Paper elevation={3} sx={{ padding: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
+    <Container
+      component="main"
+      maxWidth="xs"
+      sx={{
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        minHeight: '100vh',
+      }}
+    >
+      <Paper
+        elevation={3}
+        sx={{
+          padding: 4,
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          width: '100%',
+        }}
+      >
         {isLogin ? (
           <>
             <Typography variant="h5">Login</Typography>
-            <form style={{ width: '100%' }}> {/* Full-width form */}
+            <form style={{ width: '100%' }}>
               <TextField required fullWidth label="Username" margin="normal" variant="outlined" />
               <TextField required fullWidth label="Password" type="password" margin="normal" variant="outlined" />
               <Button fullWidth sx={{ mt: 2 }} variant="contained" color="primary" type="submit">
@@ -25,7 +43,7 @@ const Login = () => {
         ) : (
           <>
             <Typography variant="h5">Register</Typography>
-            <form style={{ width: '100%' }}> {/* Full-width form */}
+            <form style={{ width: '100%' }}>
               <TextField required fullWidth label="Username" margin="normal" variant="outlined" />
               <TextField required fullWidth label="Email" type="email" margin="normal" variant="outlined" />
               <TextField required fullWidth label="Password" type="password" margin="normal" variant="outlined" />
