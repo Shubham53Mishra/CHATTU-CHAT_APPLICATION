@@ -6,18 +6,18 @@ const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
 
   return (
-    <Container component="main" maxWidth="xs">
-      <Paper elevation={3} sx={{ padding: 4, display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+    <Container component="main" maxWidth={false} sx={{ width: '100%' }}> {/* Full-width container */}
+      <Paper elevation={3} sx={{ padding: 4, display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%' }}>
         {isLogin ? (
           <>
             <Typography variant="h5">Login</Typography>
-            <form style={{ width: '100%',marginTop: "1rem" }}>
+            <form style={{ width: '100%' }}> {/* Full-width form */}
               <TextField required fullWidth label="Username" margin="normal" variant="outlined" />
               <TextField required fullWidth label="Password" type="password" margin="normal" variant="outlined" />
               <Button fullWidth sx={{ mt: 2 }} variant="contained" color="primary" type="submit">
                 Login
               </Button>
-              <Button sx={{ mt: 2 }} color="secondary" onClick={() => setIsLogin(false)}>
+              <Button fullWidth sx={{ mt: 2 }} color="secondary" onClick={() => setIsLogin(false)}>
                 Don't have an account? Register
               </Button>
             </form>
@@ -25,14 +25,14 @@ const Login = () => {
         ) : (
           <>
             <Typography variant="h5">Register</Typography>
-            <form>
+            <form style={{ width: '100%' }}> {/* Full-width form */}
               <TextField required fullWidth label="Username" margin="normal" variant="outlined" />
               <TextField required fullWidth label="Email" type="email" margin="normal" variant="outlined" />
               <TextField required fullWidth label="Password" type="password" margin="normal" variant="outlined" />
               <Button fullWidth sx={{ mt: 2 }} variant="contained" color="primary" type="submit">
                 Register
               </Button>
-              <Button sx={{ mt: 2 }} color="secondary" onClick={() => setIsLogin(true)}>
+              <Button fullWidth sx={{ mt: 2 }} color="secondary" onClick={() => setIsLogin(true)}>
                 Already have an account? Login
               </Button>
             </form>
