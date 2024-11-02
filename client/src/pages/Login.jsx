@@ -1,8 +1,7 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
 import { Container, Paper, TextField, Typography, Button, Stack, Avatar, IconButton } from '@mui/material';
-import    {CameraAlt as cameraAltIcons } from '@mui/icons-material';
- 
+import { CameraAlt as CameraAltIcon } from '@mui/icons-material';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -38,29 +37,24 @@ const Login = () => {
                 Login
               </Button>
               <Button fullWidth sx={{ mt: 2 }} color="secondary" onClick={() => setIsLogin(false)}>
-                Don't have an account?  Sing up 
+                Don't have an account? Sign up
               </Button>
             </form>
           </>
         ) : (
           <>
-            <Typography variant="h5">  Sing up</Typography>
+            <Typography variant="h5">Sign up</Typography>
             <form style={{ width: '100%' }}>
-              <Stack position={"relative"} width={"10rem"} margin={"auto"}}>
-              <Avatar sx={{
-                width: "10rem",
-                height:"10rem",
-                objectFit:"contain"
-              }}
+              <Stack position="relative" width="10rem" margin="auto">
+                <Avatar
+                  sx={{
+                    width: "10rem",
+                    height: "10rem",
+                    objectFit: "contain"
+                  }}
                 />
-
-                <IconButton>
-                  <>
-                  <cameraAItcon />
-                   <visuallyHidden>
-                    Upload photo
-                  </visuallyHidden>
-                 
+                <IconButton sx={{ position: 'absolute', bottom: 0, right: 0 }}>
+                  <CameraAltIcon />
                 </IconButton>
               </Stack>
 
@@ -69,7 +63,7 @@ const Login = () => {
               <TextField required fullWidth label="Email" type="email" margin="normal" variant="outlined" />
               <TextField required fullWidth label="Password" type="password" margin="normal" variant="outlined" />
               <Button fullWidth sx={{ mt: 2 }} variant="contained" color="primary" type="submit">
-                Sing up
+                Sign up
               </Button>
               <Button fullWidth sx={{ mt: 2 }} color="secondary" onClick={() => setIsLogin(true)}>
                 Already have an account? Login
