@@ -1,6 +1,8 @@
 // eslint-disable-next-line no-unused-vars
 import React, { useState } from 'react';
-import { Container, Paper, TextField, Typography, Button } from '@mui/material';
+import { Container, Paper, TextField, Typography, Button, Stack, Avatar, IconButton } from '@mui/material';
+import    {CameraAlt as cameraAltIcons } from '@mui/icons-material';
+ 
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
@@ -36,19 +38,38 @@ const Login = () => {
                 Login
               </Button>
               <Button fullWidth sx={{ mt: 2 }} color="secondary" onClick={() => setIsLogin(false)}>
-                Don't have an account? Register
+                Don't have an account?  Sing up 
               </Button>
             </form>
           </>
         ) : (
           <>
-            <Typography variant="h5">Register</Typography>
+            <Typography variant="h5">  Sing up</Typography>
             <form style={{ width: '100%' }}>
+              <Stack position={"relative"} width={"10rem"} margin={"auto"}}>
+              <Avatar sx={{
+                width: "10rem",
+                height:"10rem",
+                objectFit:"contain"
+              }}
+                />
+
+                <IconButton>
+                  <>
+                  <cameraAItcon />
+                   <visuallyHidden>
+                    Upload photo
+                  </visuallyHidden>
+                 
+                </IconButton>
+              </Stack>
+
               <TextField required fullWidth label="Username" margin="normal" variant="outlined" />
+              <TextField required fullWidth label="Bio" margin="normal" variant="outlined" />
               <TextField required fullWidth label="Email" type="email" margin="normal" variant="outlined" />
               <TextField required fullWidth label="Password" type="password" margin="normal" variant="outlined" />
               <Button fullWidth sx={{ mt: 2 }} variant="contained" color="primary" type="submit">
-                Register
+                Sing up
               </Button>
               <Button fullWidth sx={{ mt: 2 }} color="secondary" onClick={() => setIsLogin(true)}>
                 Already have an account? Login
