@@ -18,12 +18,13 @@ const Login = () => {
 
   const handleLogin = (e) => {
     e.preventDefault();
-    
-  }
+    // Add login handling logic here
+  };
 
-  const handleSingUP = (e) => { 
+  const handleSignUp = (e) => {
     e.preventDefault();
-  }
+    // Add signup handling logic here
+  };
 
   return (
     <Container
@@ -50,7 +51,7 @@ const Login = () => {
           // Login Form
           <>
             <Typography variant="h5">Login</Typography>
-            <form style={{ width: '100%' }} onSubmit={handleLogin}>>
+            <form style={{ width: '100%' }} onSubmit={handleLogin}>
               <TextField
                 required
                 fullWidth
@@ -93,11 +94,11 @@ const Login = () => {
           // Signup Form
           <>
             <Typography variant="h5">Sign up</Typography>
-            <form style={{ width: '100%' }} onSubmit={handleSingUP}>
+            <form style={{ width: '100%' }} onSubmit={handleSignUp}>
               {/* Avatar with file upload */}
               <Stack position="relative" width="10rem" margin="auto">
                 <Avatar
-                  src={avatar.preview}  // Avatar preview from file upload
+                  src={avatar.preview} // Avatar preview from file upload
                   sx={{
                     width: '10rem',
                     height: '10rem',
