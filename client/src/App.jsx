@@ -8,13 +8,13 @@ const Chat = lazy(() => import('./pages/Chat'));
 const Groups = lazy(() => import('./pages/Groups'));
 
 const App = () => {
-  const [user, setUser] = useState(false); // Start with user as false (not logged in)
+  const [user, setUser] = useState(true); // Start with user as false (not logged in)
 
   return (
     <BrowserRouter>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route element={<ProtectRoute/>}>
+          <Route element={<ProtectRoute user={user}/>}>
           <Route 
             path="/" 
             element={
@@ -41,7 +41,11 @@ const App = () => {
           />
           </Route>
           
-          <Route path="/login" element={<Login />} />
+          <Route path="/login" element={
+            <ProtectRoute user={!user} redirect="/">
+              <Login />
+            </ProtectRoute>
+          } />
           
         </Routes>
       </Suspense>
