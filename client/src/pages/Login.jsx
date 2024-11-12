@@ -95,12 +95,17 @@ const Login = () => {
                     objectFit: 'contain',
                   }}
                 />
-                 {avatar.error && (
-                <Typography  m={1rem "auto"} width={"fit-content"} display={"block"} variant="caption" color="error">
-                  {avatar.error}
-                </Typography>
-              )}
-
+                {avatar.error && (
+                  <Typography
+                    m="auto"
+                    width="fit-content"
+                    display="block"
+                    variant="caption"
+                    color="error"
+                  >
+                    {avatar.error}
+                  </Typography>
+                )}
                 <IconButton
                   component="label"
                   sx={{
