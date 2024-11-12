@@ -1,12 +1,12 @@
-// eslint-disable-next-line no-unused-vars
-import React from 'react'
-import { useNavigate } from 'react-router-dom'
+import React from 'react';
+import { Navigate } from 'react-router-dom';
 
-const ProtectRoute = ({children,user,redirect="/login"}) => {
-  if(!user) return <Navigator to={redirect} />
+const ProtectRoute = ({ children, user, redirect = "/login" }) => {
+  // If the user is not authenticated, redirect to the login page
+  if (!user) return <Navigate to={redirect}  />;
+  
+  // Otherwise, render the child components
   return children;
- 
 }
 
-export default ProtectRoute
-
+export default ProtectRoute;

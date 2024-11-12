@@ -1,29 +1,44 @@
- // eslint-disable-next-line no-unused-vars
-import React, { lazy, Suspense } from 'react'; // Keep this import to use JSX
+import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProtectRoute from './components/auth/ProtectRoute';
 
-const Home = lazy(() => import('./pages/Home')); // Lazy load Home component
-const Login = lazy(() => import('./pages/Login')); // Lazy load Login component
+const Home = lazy(() => import('./pages/Home'));
+const Login = lazy(() => import('./pages/Login'));
 const Chat = lazy(() => import('./pages/Chat'));
 const Groups = lazy(() => import('./pages/Groups'));
 
-let user = true;
- 
-
-
 const App = () => {
+  const [user, setUser] = useState(false); // Start with user as false (not logged in)
+
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>  
+      <Suspense fallback={<div>Loading...</div>}>
         <Routes>
-          <Route path="/" element={<ProtectRoute>
-              <Home />
-          </ProtectRoute>
-          } />
-          <Route path="/login" element={<Login />} />  
-          <Route path="/chat/:chatId" element={<Chat />} /> 
-          <Route path="/groups" element={<Groups />} />    
+          <Route 
+            path="/" 
+            element={
+              <ProtectRoute user={user}>
+                <Home />
+              </ProtectRoute>
+            } 
+          />
+          <Route path="/login" element={<Login />} />
+          <Route 
+            path="/chat/:chatId" 
+            element={
+              <ProtectRoute user={user}>
+                <Chat />
+              </ProtectRoute>
+            } 
+          />
+          <Route 
+            path="/groups" 
+            element={
+              <ProtectRoute user={user}>
+                <Groups />
+              </ProtectRoute>
+            } 
+          />
         </Routes>
       </Suspense>
     </BrowserRouter>
