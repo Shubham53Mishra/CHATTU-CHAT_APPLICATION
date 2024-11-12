@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import { Container, Paper, TextField, Typography, Button, Stack, Avatar, IconButton } from '@mui/material';
 import { CameraAlt as CameraAltIcon } from '@mui/icons-material';
 import VisuallyHiddenInput from '../components/styles/StyledCompoents.jsx';
-import { useInputValidation } from '6pp';
+import { useInputValidation,useStrongPassword } from '6pp';
 import { usernameValidator } from '../utils/validators.js';
 
 const Login = () => {
@@ -12,7 +12,7 @@ const Login = () => {
    const name = useInputValidation("");
   const bio = useInputValidation("");
   const username = useInputValidation("",usernameValidator);
-  const password = useInputValidation("");
+  const password = useStrongPassword("");
   
   return (
     <Container
@@ -151,6 +151,13 @@ const Login = () => {
                 value={password.value}
                 onChange={password.changeHandler}
               />
+                {
+                  password.error && (
+                  <Typography variant="caption" color="error">
+                    {password.error}
+                  </Typography>
+                )
+              }
               <Button
                 fullWidth
                 sx={{ mt: 2 }}
