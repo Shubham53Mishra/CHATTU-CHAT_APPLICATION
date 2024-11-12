@@ -1,30 +1,15 @@
 import React, { useState } from 'react';
 import { Container, Paper, TextField, Typography, Button, Stack, Avatar, IconButton } from '@mui/material';
 import { CameraAlt as CameraAltIcon } from '@mui/icons-material';
+import VisuallyHiddenInput from '../components/styles/StyledCompoents.jsx';
 import { useFileHandler, useInputValidation, useStrongPassword } from '6pp';
 import { usernameValidator } from '../utils/validators.js';
 
-// VisuallyHiddenInput Component for handling hidden file input styling
-const VisuallyHiddenInput = ({ onChange }) => (
-  <input
-    type="file"
-    onChange={onChange}
-    style={{
-      position: 'absolute',
-      width: '1px',
-      height: '1px',
-      padding: 0,
-      margin: '-1px',
-      overflow: 'hidden',
-      clip: 'rect(0, 0, 0, 0)',
-      border: 0,
-    }}
-  />
-);
-
 const Login = () => {
+  // State to toggle between login and signup
   const [isLogin, setIsLogin] = useState(true);
 
+  // Form validation hooks
   const name = useInputValidation("");
   const bio = useInputValidation("");
   const username = useInputValidation("", usernameValidator);
@@ -53,6 +38,7 @@ const Login = () => {
         }}
       >
         {isLogin ? (
+          // Login Form
           <>
             <Typography variant="h5">Login</Typography>
             <form style={{ width: '100%' }}>
@@ -95,12 +81,14 @@ const Login = () => {
             </form>
           </>
         ) : (
+          // Signup Form
           <>
             <Typography variant="h5">Sign up</Typography>
             <form style={{ width: '100%' }}>
+              {/* Avatar with file upload */}
               <Stack position="relative" width="10rem" margin="auto">
                 <Avatar
-                  src={avatar.preview}
+                  src={avatar.preview}  // Avatar preview from file upload
                   sx={{
                     width: '10rem',
                     height: '10rem',
@@ -121,7 +109,7 @@ const Login = () => {
                   }}
                 >
                   <CameraAltIcon />
-                  <VisuallyHiddenInput onChange={avatar.changeHandler} />
+                  <VisuallyHiddenInput type="file" onChange={avatar.changeHandler} />
                 </IconButton>
               </Stack>
               <TextField
