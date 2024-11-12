@@ -27,6 +27,15 @@ const Login = () => {
   };
 
   return (
+    <div
+    style={
+      {
+        backgroundImage:
+        "liner-gradient(rgba(200,200,200,0.5)),rgba(120,110,220,0.5))",
+      }
+    }
+    >
+   
     <Container
       component="main"
       maxWidth="xs"
