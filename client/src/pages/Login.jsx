@@ -28,189 +28,186 @@ const Login = () => {
 
   return (
     <div
-    style={
-      {
-        backgroundImage:
-        "liner-gradient(rgba(200,200,200,0.5)),rgba(120,110,220,0.5))",
-      }
-    }
-    >
-   
-    <Container
-      component="main"
-      maxWidth="xs"
-      sx={{
-        display: 'flex',
-        justifyContent: 'center',
-        alignItems: 'center',
-        minHeight: '100vh',
+      style={{
+        backgroundImage: "linear-gradient(rgba(200,200,200,0.5), rgba(120,110,220,0.5))",
       }}
     >
-      <Paper
-        elevation={3}
+      <Container
+        component="main"
+        maxWidth="xs"
         sx={{
-          padding: 4,
           display: 'flex',
-          flexDirection: 'column',
+          justifyContent: 'center',
           alignItems: 'center',
-          width: '100%',
+          minHeight: '100vh',
         }}
       >
-        {isLogin ? (
-          // Login Form
-          <>
-            <Typography variant="h5">Login</Typography>
-            <form style={{ width: '100%' }} onSubmit={handleLogin}>
-              <TextField
-                required
-                fullWidth
-                label="Username"
-                margin="normal"
-                variant="outlined"
-                value={username.value}
-                onChange={username.changeHandler}
-              />
-              <TextField
-                required
-                fullWidth
-                label="Password"
-                type="password"
-                margin="normal"
-                variant="outlined"
-                value={password.value}
-                onChange={password.changeHandler}
-              />
-              <Button
-                fullWidth
-                sx={{ mt: 2 }}
-                variant="contained"
-                color="primary"
-                type="submit"
-              >
-                Login
-              </Button>
-              <Button
-                fullWidth
-                sx={{ mt: 2 }}
-                color="secondary"
-                onClick={() => setIsLogin(false)}
-              >
-                Don't have an account? Sign up
-              </Button>
-            </form>
-          </>
-        ) : (
-          // Signup Form
-          <>
-            <Typography variant="h5">Sign up</Typography>
-            <form style={{ width: '100%' }} onSubmit={handleSignUp}>
-              {/* Avatar with file upload */}
-              <Stack position="relative" width="10rem" margin="auto">
-                <Avatar
-                  src={avatar.preview} // Avatar preview from file upload
-                  sx={{
-                    width: '10rem',
-                    height: '10rem',
-                    objectFit: 'contain',
-                  }}
+        <Paper
+          elevation={3}
+          sx={{
+            padding: 4,
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            width: '100%',
+          }}
+        >
+          {isLogin ? (
+            // Login Form
+            <>
+              <Typography variant="h5">Login</Typography>
+              <form style={{ width: '100%' }} onSubmit={handleLogin}>
+                <TextField
+                  required
+                  fullWidth
+                  label="Username"
+                  margin="normal"
+                  variant="outlined"
+                  value={username.value}
+                  onChange={username.changeHandler}
                 />
-                {avatar.error && (
-                  <Typography
-                    m="auto"
-                    width="fit-content"
-                    display="block"
-                    variant="caption"
-                    color="error"
+                <TextField
+                  required
+                  fullWidth
+                  label="Password"
+                  type="password"
+                  margin="normal"
+                  variant="outlined"
+                  value={password.value}
+                  onChange={password.changeHandler}
+                />
+                <Button
+                  fullWidth
+                  sx={{ mt: 2 }}
+                  variant="contained"
+                  color="primary"
+                  type="submit"
+                >
+                  Login
+                </Button>
+                <Button
+                  fullWidth
+                  sx={{ mt: 2 }}
+                  color="secondary"
+                  onClick={() => setIsLogin(false)}
+                >
+                  Don't have an account? Sign up
+                </Button>
+              </form>
+            </>
+          ) : (
+            // Signup Form
+            <>
+              <Typography variant="h5">Sign up</Typography>
+              <form style={{ width: '100%' }} onSubmit={handleSignUp}>
+                {/* Avatar with file upload */}
+                <Stack position="relative" width="10rem" margin="auto">
+                  <Avatar
+                    src={avatar.preview} // Avatar preview from file upload
+                    sx={{
+                      width: '10rem',
+                      height: '10rem',
+                      objectFit: 'contain',
+                    }}
+                  />
+                  {avatar.error && (
+                    <Typography
+                      m="auto"
+                      width="fit-content"
+                      display="block"
+                      variant="caption"
+                      color="error"
+                    >
+                      {avatar.error}
+                    </Typography>
+                  )}
+                  <IconButton
+                    component="label"
+                    sx={{
+                      position: 'absolute',
+                      bottom: 0,
+                      right: 0,
+                      color: 'white',
+                      bgcolor: 'rgba(0, 0, 0, 0.5)',
+                      "&:hover": {
+                        bgcolor: 'rgba(0, 0, 0, 0.7)',
+                      },
+                    }}
                   >
-                    {avatar.error}
+                    <CameraAltIcon />
+                    <VisuallyHiddenInput type="file" onChange={avatar.changeHandler} />
+                  </IconButton>
+                </Stack>
+                <TextField
+                  required
+                  fullWidth
+                  label="Name"
+                  margin="normal"
+                  variant="outlined"
+                  value={name.value}
+                  onChange={name.changeHandler}
+                />
+                <TextField
+                  required
+                  fullWidth
+                  label="Bio"
+                  margin="normal"
+                  variant="outlined"
+                  value={bio.value}
+                  onChange={bio.changeHandler}
+                />
+                <TextField
+                  required
+                  fullWidth
+                  label="Username"
+                  margin="normal"
+                  variant="outlined"
+                  value={username.value}
+                  onChange={username.changeHandler}
+                />
+                {username.error && (
+                  <Typography variant="caption" color="error">
+                    {username.error}
                   </Typography>
                 )}
-                <IconButton
-                  component="label"
-                  sx={{
-                    position: 'absolute',
-                    bottom: 0,
-                    right: 0,
-                    color: 'white',
-                    bgcolor: 'rgba(0, 0, 0, 0.5)',
-                    "&:hover": {
-                      bgcolor: 'rgba(0, 0, 0, 0.7)',
-                    },
-                  }}
+                <TextField
+                  required
+                  fullWidth
+                  label="Password"
+                  type="password"
+                  margin="normal"
+                  variant="outlined"
+                  value={password.value}
+                  onChange={password.changeHandler}
+                />
+                {password.error && (
+                  <Typography variant="caption" color="error">
+                    {password.error}
+                  </Typography>
+                )}
+                <Button
+                  fullWidth
+                  sx={{ mt: 2 }}
+                  variant="contained"
+                  color="primary"
+                  type="submit"
                 >
-                  <CameraAltIcon />
-                  <VisuallyHiddenInput type="file" onChange={avatar.changeHandler} />
-                </IconButton>
-              </Stack>
-              <TextField
-                required
-                fullWidth
-                label="Name"
-                margin="normal"
-                variant="outlined"
-                value={name.value}
-                onChange={name.changeHandler}
-              />
-              <TextField
-                required
-                fullWidth
-                label="Bio"
-                margin="normal"
-                variant="outlined"
-                value={bio.value}
-                onChange={bio.changeHandler}
-              />
-              <TextField
-                required
-                fullWidth
-                label="Username"
-                margin="normal"
-                variant="outlined"
-                value={username.value}
-                onChange={username.changeHandler}
-              />
-              {username.error && (
-                <Typography variant="caption" color="error">
-                  {username.error}
-                </Typography>
-              )}
-              <TextField
-                required
-                fullWidth
-                label="Password"
-                type="password"
-                margin="normal"
-                variant="outlined"
-                value={password.value}
-                onChange={password.changeHandler}
-              />
-              {password.error && (
-                <Typography variant="caption" color="error">
-                  {password.error}
-                </Typography>
-              )}
-              <Button
-                fullWidth
-                sx={{ mt: 2 }}
-                variant="contained"
-                color="primary"
-                type="submit"
-              >
-                Sign up
-              </Button>
-              <Button
-                fullWidth
-                sx={{ mt: 2 }}
-                color="secondary"
-                onClick={() => setIsLogin(true)}
-              >
-                Already have an account? Login
-              </Button>
-            </form>
-          </>
-        )}
-      </Paper>
-    </Container>
+                  Sign up
+                </Button>
+                <Button
+                  fullWidth
+                  sx={{ mt: 2 }}
+                  color="secondary"
+                  onClick={() => setIsLogin(true)}
+                >
+                  Already have an account? Login
+                </Button>
+              </form>
+            </>
+          )}
+        </Paper>
+      </Container>
+    </div>
   );
 };
 
