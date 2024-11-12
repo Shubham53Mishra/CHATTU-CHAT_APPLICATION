@@ -14,6 +14,7 @@ const App = () => {
     <BrowserRouter>
       <Suspense fallback={<div>Loading...</div>}>
         <Routes>
+          <Route element={<ProtectRoute/>}>
           <Route 
             path="/" 
             element={
@@ -22,8 +23,7 @@ const App = () => {
               </ProtectRoute>
             } 
           />
-          <Route path="/login" element={<Login />} />
-          <Route 
+           <Route 
             path="/chat/:chatId" 
             element={
               <ProtectRoute user={user}>
@@ -39,6 +39,10 @@ const App = () => {
               </ProtectRoute>
             } 
           />
+          </Route>
+          
+          <Route path="/login" element={<Login />} />
+          
         </Routes>
       </Suspense>
     </BrowserRouter>
