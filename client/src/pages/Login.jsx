@@ -48,13 +48,7 @@ const Login = () => {
                 value={username.value}
                 onChange={username.changeHandler}
               />
-              {
-                username.error && (
-                  <Typography variant="caption" color="error">
-                    {username.error}
-                  </Typography>
-                )
-              }
+               
               <TextField
                 required
                 fullWidth
@@ -135,12 +129,18 @@ const Login = () => {
                 required
                 fullWidth
                 label="Username"
-                
                 margin="normal"
                 variant="outlined"
                 value={username.value}
                 onChange={username.changeHandler}
               />
+              {
+                username.error && (
+                  <Typography variant="caption" color="error">
+                    {username.error}
+                  </Typography>
+                )
+              }
               <TextField
                 required
                 fullWidth
