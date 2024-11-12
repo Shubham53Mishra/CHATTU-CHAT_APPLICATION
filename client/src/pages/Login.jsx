@@ -1,19 +1,36 @@
-// Remove the eslint-disable line as all variables will be used
 import React, { useState } from 'react';
 import { Container, Paper, TextField, Typography, Button, Stack, Avatar, IconButton } from '@mui/material';
 import { CameraAlt as CameraAltIcon } from '@mui/icons-material';
-import VisuallyHiddenInput from '../components/styles/StyledCompoents.jsx';
-import { useInputValidation,useStrongPassword } from '6pp';
+import { useFileHandler, useInputValidation, useStrongPassword } from '6pp';
 import { usernameValidator } from '../utils/validators.js';
+
+// VisuallyHiddenInput Component for handling hidden file input styling
+const VisuallyHiddenInput = ({ onChange }) => (
+  <input
+    type="file"
+    onChange={onChange}
+    style={{
+      position: 'absolute',
+      width: '1px',
+      height: '1px',
+      padding: 0,
+      margin: '-1px',
+      overflow: 'hidden',
+      clip: 'rect(0, 0, 0, 0)',
+      border: 0,
+    }}
+  />
+);
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
 
-   const name = useInputValidation("");
+  const name = useInputValidation("");
   const bio = useInputValidation("");
-  const username = useInputValidation("",usernameValidator);
+  const username = useInputValidation("", usernameValidator);
   const password = useStrongPassword("");
-  
+  const avatar = useFileHandler("single");
+
   return (
     <Container
       component="main"
@@ -48,7 +65,6 @@ const Login = () => {
                 value={username.value}
                 onChange={username.changeHandler}
               />
-               
               <TextField
                 required
                 fullWidth
@@ -84,6 +100,7 @@ const Login = () => {
             <form style={{ width: '100%' }}>
               <Stack position="relative" width="10rem" margin="auto">
                 <Avatar
+                  src={avatar.preview}
                   sx={{
                     width: '10rem',
                     height: '10rem',
@@ -104,7 +121,7 @@ const Login = () => {
                   }}
                 >
                   <CameraAltIcon />
-                  <VisuallyHiddenInput type="file" />
+                  <VisuallyHiddenInput onChange={avatar.changeHandler} />
                 </IconButton>
               </Stack>
               <TextField
@@ -134,13 +151,11 @@ const Login = () => {
                 value={username.value}
                 onChange={username.changeHandler}
               />
-              {
-                username.error && (
-                  <Typography variant="caption" color="error">
-                    {username.error}
-                  </Typography>
-                )
-              }
+              {username.error && (
+                <Typography variant="caption" color="error">
+                  {username.error}
+                </Typography>
+              )}
               <TextField
                 required
                 fullWidth
@@ -151,13 +166,11 @@ const Login = () => {
                 value={password.value}
                 onChange={password.changeHandler}
               />
-                {
-                  password.error && (
-                  <Typography variant="caption" color="error">
-                    {password.error}
-                  </Typography>
-                )
-              }
+              {password.error && (
+                <Typography variant="caption" color="error">
+                  {password.error}
+                </Typography>
+              )}
               <Button
                 fullWidth
                 sx={{ mt: 2 }}
