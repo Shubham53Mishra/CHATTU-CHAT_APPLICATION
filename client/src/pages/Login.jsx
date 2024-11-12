@@ -16,6 +16,15 @@ const Login = () => {
   const password = useStrongPassword("");
   const avatar = useFileHandler("single");
 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    
+  }
+
+  const handleSingUP = (e) => { 
+    e.preventDefault();
+  }
+
   return (
     <Container
       component="main"
@@ -41,7 +50,7 @@ const Login = () => {
           // Login Form
           <>
             <Typography variant="h5">Login</Typography>
-            <form style={{ width: '100%' }}>
+            <form style={{ width: '100%' }} onSubmit={handleLogin}>>
               <TextField
                 required
                 fullWidth
@@ -84,7 +93,7 @@ const Login = () => {
           // Signup Form
           <>
             <Typography variant="h5">Sign up</Typography>
-            <form style={{ width: '100%' }}>
+            <form style={{ width: '100%' }} onSubmit={handleSingUP}>
               {/* Avatar with file upload */}
               <Stack position="relative" width="10rem" margin="auto">
                 <Avatar
