@@ -1,11 +1,18 @@
-// eslint-disable-next-line no-unused-vars
+// Remove the eslint-disable line as all variables will be used
 import React, { useState } from 'react';
 import { Container, Paper, TextField, Typography, Button, Stack, Avatar, IconButton } from '@mui/material';
 import { CameraAlt as CameraAltIcon } from '@mui/icons-material';
 import VisuallyHiddenInput from '../components/styles/StyledCompoents.jsx';
+import { useInputValidation } from '6pp';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
+
+  const name = useInputValidation("");
+  const bio = useInputValidation("");
+  const username = useInputValidation("");
+  const password = useInputValidation("");
+  const email = useInputValidation("");
 
   return (
     <Container
@@ -32,12 +39,40 @@ const Login = () => {
           <>
             <Typography variant="h5">Login</Typography>
             <form style={{ width: '100%' }}>
-              <TextField required fullWidth label="Username" margin="normal" variant="outlined" />
-              <TextField required fullWidth label="Password" type="password" margin="normal" variant="outlined" />
-              <Button fullWidth sx={{ mt: 2 }} variant="contained" color="primary" type="submit">
+              <TextField
+                required
+                fullWidth
+                label="Username"
+                margin="normal"
+                variant="outlined"
+                value={username.value}
+                onChange={username.changeHandler}
+              />
+              <TextField
+                required
+                fullWidth
+                label="Password"
+                type="password"
+                margin="normal"
+                variant="outlined"
+                value={password.value}
+                onChange={password.changeHandler}
+              />
+              <Button
+                fullWidth
+                sx={{ mt: 2 }}
+                variant="contained"
+                color="primary"
+                type="submit"
+              >
                 Login
               </Button>
-              <Button fullWidth sx={{ mt: 2 }} color="secondary" onClick={() => setIsLogin(false)}>
+              <Button
+                fullWidth
+                sx={{ mt: 2 }}
+                color="secondary"
+                onClick={() => setIsLogin(false)}
+              >
                 Don't have an account? Sign up
               </Button>
             </form>
@@ -49,38 +84,81 @@ const Login = () => {
               <Stack position="relative" width="10rem" margin="auto">
                 <Avatar
                   sx={{
-                    width: "10rem",
-                    height: "10rem",
-                    objectFit: "contain"
+                    width: '10rem',
+                    height: '10rem',
+                    objectFit: 'contain',
                   }}
                 />
                 <IconButton
-                  component="label" 
+                  component="label"
                   sx={{
                     position: 'absolute',
                     bottom: 0,
                     right: 0,
                     color: 'white',
-                    bgcolor: "rgba(0, 0, 0, 0.5)",
+                    bgcolor: 'rgba(0, 0, 0, 0.5)',
                     "&:hover": {
-                      bgcolor: "rgba(0, 0, 0, 0.7)", 
+                      bgcolor: 'rgba(0, 0, 0, 0.7)',
                     },
-                    component: "label",
                   }}
                 >
                   <CameraAltIcon />
-                  <VisuallyHiddenInput type="file" /> 
+                  <VisuallyHiddenInput type="file" />
                 </IconButton>
               </Stack>
-
-              <TextField required fullWidth label="Username" margin="normal" variant="outlined" />
-              <TextField required fullWidth label="Bio" margin="normal" variant="outlined" />
-              <TextField required fullWidth label="Email" type="email" margin="normal" variant="outlined" />
-              <TextField required fullWidth label="Password" type="password" margin="normal" variant="outlined" />
-              <Button fullWidth sx={{ mt: 2 }} variant="contained" color="primary" type="submit">
+              <TextField
+                required
+                fullWidth
+                label="Username"
+                margin="normal"
+                variant="outlined"
+                value={username.value}
+                onChange={username.changeHandler}
+              />
+              <TextField
+                required
+                fullWidth
+                label="Bio"
+                margin="normal"
+                variant="outlined"
+                value={bio.value}
+                onChange={bio.changeHandler}
+              />
+              <TextField
+                required
+                fullWidth
+                label="Email"
+                type="email"
+                margin="normal"
+                variant="outlined"
+                value={email.value}
+                onChange={email.changeHandler}
+              />
+              <TextField
+                required
+                fullWidth
+                label="Password"
+                type="password"
+                margin="normal"
+                variant="outlined"
+                value={password.value}
+                onChange={password.changeHandler}
+              />
+              <Button
+                fullWidth
+                sx={{ mt: 2 }}
+                variant="contained"
+                color="primary"
+                type="submit"
+              >
                 Sign up
               </Button>
-              <Button fullWidth sx={{ mt: 2 }} color="secondary" onClick={() => setIsLogin(true)}>
+              <Button
+                fullWidth
+                sx={{ mt: 2 }}
+                color="secondary"
+                onClick={() => setIsLogin(true)}
+              >
                 Already have an account? Login
               </Button>
             </form>
