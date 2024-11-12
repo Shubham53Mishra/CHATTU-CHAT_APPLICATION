@@ -8,7 +8,7 @@ import { useInputValidation } from '6pp';
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
 
-  const name = useInputValidation("");
+  // const name = useInputValidation("");
   const bio = useInputValidation("");
   const username = useInputValidation("");
   const password = useInputValidation("");
