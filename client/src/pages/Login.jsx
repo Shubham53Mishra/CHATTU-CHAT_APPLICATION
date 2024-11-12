@@ -4,16 +4,16 @@ import { Container, Paper, TextField, Typography, Button, Stack, Avatar, IconBut
 import { CameraAlt as CameraAltIcon } from '@mui/icons-material';
 import VisuallyHiddenInput from '../components/styles/StyledCompoents.jsx';
 import { useInputValidation } from '6pp';
+import { usernameValidator } from '../utils/validators.js';
 
 const Login = () => {
   const [isLogin, setIsLogin] = useState(true);
 
-  // const name = useInputValidation("");
+   const name = useInputValidation("");
   const bio = useInputValidation("");
-  const username = useInputValidation("");
+  const username = useInputValidation("",usernameValidator);
   const password = useInputValidation("");
-  const email = useInputValidation("");
-
+  
   return (
     <Container
       component="main"
@@ -48,6 +48,13 @@ const Login = () => {
                 value={username.value}
                 onChange={username.changeHandler}
               />
+              {
+                username.error && (
+                  <Typography variant="caption" color="error">
+                    {username.error}
+                  </Typography>
+                )
+              }
               <TextField
                 required
                 fullWidth
@@ -109,11 +116,11 @@ const Login = () => {
               <TextField
                 required
                 fullWidth
-                label="Username"
+                label="Name"
                 margin="normal"
                 variant="outlined"
-                value={username.value}
-                onChange={username.changeHandler}
+                value={name.value}
+                onChange={name.changeHandler}
               />
               <TextField
                 required
@@ -127,12 +134,12 @@ const Login = () => {
               <TextField
                 required
                 fullWidth
-                label="Email"
-                type="email"
+                label="Username"
+                
                 margin="normal"
                 variant="outlined"
-                value={email.value}
-                onChange={email.changeHandler}
+                value={username.value}
+                onChange={username.changeHandler}
               />
               <TextField
                 required
