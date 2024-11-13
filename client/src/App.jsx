@@ -46,7 +46,7 @@ const App = () => {
               <Login />
             </ProtectRoute>
           } />
-          
+           <Route path='*' element={<Home/>}/>
         </Routes>
       </Suspense>
     </BrowserRouter>
