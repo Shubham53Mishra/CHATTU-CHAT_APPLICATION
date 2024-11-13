@@ -1,6 +1,8 @@
 import React from 'react'
 
-const Title = () => {
+const Title = (
+    {title="Chat",description="this is the Chat App called Shubham"}
+) => {
   return (
     <div>Title</div>
   )
