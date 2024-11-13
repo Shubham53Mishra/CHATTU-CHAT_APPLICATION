@@ -1,5 +1,6 @@
  // eslint-disable-next-line no-unused-vars
  import React from 'react'
+import AppLayout from '../components/layout/AppLayout'
  
  const Home = () => {
    return (
@@ -7,4 +8,4 @@
    )
  }
  
- export default Home
+ export default AppLayout()(Home)
