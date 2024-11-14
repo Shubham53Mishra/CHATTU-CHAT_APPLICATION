@@ -13,10 +13,18 @@ const AppLayout = (WrappedComponent) => {
                 <Header />
                 <Grid container height={"calc(100vh - 4rem)"}>
                     <Grid item xs={4} height={"100%"} bgcolor="primary.main">
-                    <Grid item xs={4} height={"100%"} bgcolor="primary.main">
-                    <Grid item xs={4} height={"100%"} bgcolor="primary.main">
+                        first
+                        {/* Content for the first column */}
                     </Grid>
-                    <WrappedComponent {...props} />
+                    <Grid item xs={4} height={"100%"} bgcolor="primary.main">
+                        {/* Content for the second column */}
+                         <WrappedComponent {...props} />
+                    </Grid>
+                    <Grid item xs={4} height={"100%"} bgcolor="primary.main">
+                        {/* Content for the third column */}
+                        third
+                    </Grid>
+                   
                 </Grid>
             </>
         );
