@@ -12,8 +12,9 @@ const AppLayout = (WrappedComponent) => {
                 <Title />
                 <Header />
                 <Grid container height={"calc(100vh - 4rem)"}>
-                    <Grid item xs={2} height={"100%"} bgcolor="primary.main">
-                        {/* Content for this sidebar/grid item */}
+                    <Grid item xs={4} height={"100%"} bgcolor="primary.main">
+                    <Grid item xs={4} height={"100%"} bgcolor="primary.main">
+                    <Grid item xs={4} height={"100%"} bgcolor="primary.main">
                     </Grid>
                     <WrappedComponent {...props} />
                 </Grid>
