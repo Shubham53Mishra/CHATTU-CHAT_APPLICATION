@@ -3,15 +3,20 @@
 import React from 'react';
 import Header from './Header';
 import Title from '../shared/Title';
+import { Grid } from '@mui/material';
 
 const AppLayout = (WrappedComponent) => {
     return (props) => {
         return (
-            < >
-            <Title title="chat App" description="this is the chat App called Shubham"/>
+            <>
+                <Title />
                 <Header />
-                <WrappedComponent {...props} />
-                <div>Footer</div>
+                <Grid container height={"calc(100vh - 4rem)"}>
+                    <Grid item xs={2} height={"100%"} bgcolor="primary.main">
+                        {/* Content for this sidebar/grid item */}
+                    </Grid>
+                    <WrappedComponent {...props} />
+                </Grid>
             </>
         );
     };
