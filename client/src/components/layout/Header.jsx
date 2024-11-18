@@ -1,17 +1,31 @@
 /* eslint-disable no-unused-vars */
-import { AppBar, Box } from '@mui/material'
+import { AppBar, Box, Toolbar, Typography } from '@mui/material'
 import React from 'react'
 
 const Header = () => {
-  return  <>
-  <Box sx={{flexGrow:1}} height={"4rem"}>
-    <AppBar position="static" sx={
-      {
-        bgcolor:"#ea7070"
-      }
-    }/>
+  return <>
+    <Box sx={{ flexGrow: 1 }} height={"4rem"}>
+      <AppBar position="static" sx={
+        {
+          bgcolor: "orange"
+        }
+      }>
+        <Toolbar>
+          <Typography
+            variant="h6"
+            sx={{
+              display: { xs: 'none', sm: 'block' },
 
-  </Box>
+            }}
+          >
+            chattu
+          </Typography>
+        </Toolbar>
+
+
+      </AppBar>
+
+    </Box>
   </>
 }
 
