@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import GroupIcon from '@mui/icons-material/Group';
 import { useNavigate } from 'react-router-dom';
-import { Logout } from '@mui/icons-material';
+import { Logout, Notifications } from '@mui/icons-material';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const Header = () => {
     setIsMobile((prev) => !prev);
   };
 
-  const openSearchDialog = () => {
+  const openSearch = () => {
     setIsSearch((prev) => !prev);
   };
 
@@ -80,9 +80,10 @@ const Header = () => {
 
           {/* Action Buttons */}
           <Box>
-            <IconBtn title="Search" icons={<SearchIcon />} onClick={openSearchDialog} />
+            <IconBtn title="Search" icons={<SearchIcon />} onClick={openSearch} />
             <IconBtn title="Open New Group" icons={<AddIcon />} onClick={openNewGroup} />
             <IconBtn title="Manage Groups" icons={<GroupIcon />} onClick={navigateToGroup} />
+            <IconBtn title="Notifications" icons={<Notifications />} onClick={openNotifications} />
             <IconBtn title="Logout" icons={<Logout />} onClick={LogoutHandler} />
           </Box>
         </Toolbar>
