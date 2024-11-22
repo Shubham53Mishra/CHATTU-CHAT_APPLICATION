@@ -1,60 +1,41 @@
 import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProtectRoute from './components/auth/ProtectRoute';
+import  { Loaders } from './components/layout/Loaders';
 
+// Lazy-loaded components
 const Home = lazy(() => import('./pages/Home'));
 const Login = lazy(() => import('./pages/Login'));
 const Chat = lazy(() => import('./pages/Chat'));
 const Groups = lazy(() => import('./pages/Groups'));
 const NotFound = lazy(() => import('./pages/NotFound'));
- 
-
-
-
-
-
-
 
 const App = () => {
-  const [user, setUser] = useState(true);  
+  const [user, setUser] = useState(true); // Simulate authentication status
 
   return (
     <BrowserRouter>
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Loaders />}> {/* Use LayoutLoader here */}
         <Routes>
-          <Route element={<ProtectRoute user={user}/>}>
-          <Route 
-            path="/" 
-            element={
-              <ProtectRoute user={user}>
-                <Home />
-              </ProtectRoute>
-            } 
-          />
-           <Route 
-            path="/chat/:chatId" 
-            element={
-              <ProtectRoute user={user}>
-                <Chat />
-              </ProtectRoute>
-            } 
-          />
-          <Route 
-            path="/groups" 
-            element={
-              <ProtectRoute user={user}>
-                <Groups />
-              </ProtectRoute>
-            } 
-          />
+          {/* Protected Routes */}
+          <Route element={<ProtectRoute user={user} />}>
+            <Route path="/" element={<Home />} />
+            <Route path="/chat/:chatId" element={<Chat />} />
+            <Route path="/groups" element={<Groups />} />
           </Route>
-          
-          <Route path="/login" element={
-            <ProtectRoute user={!user} redirect="/">
-              <Login />
-            </ProtectRoute>
-          } />
-           <Route path='*' element={<NotFound/>}/>
+
+          {/* Public Routes */}
+          <Route
+            path="/login"
+            element={
+              <ProtectRoute user={!user} redirect="/">
+                <Login />
+              </ProtectRoute>
+            }
+          />
+
+          {/* Fallback for undefined routes */}
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
     </BrowserRouter>
