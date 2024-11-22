@@ -19,6 +19,10 @@ const Header = () => {
   const openNewGroup = () => {  
     console.log("openNewGroup");
   };
+  
+  const navigateToGroup = () => {  
+    console.log("navigateToGroup");
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }} height={"4rem"}>
@@ -62,7 +66,7 @@ const Header = () => {
                 <AddIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Manage Groups">
+            <Tooltip title="Manage Groups" onClick={navigateToGroup}>
               <IconButton color="inherit" size="large">
                 <GroupIcon />
               </IconButton>
