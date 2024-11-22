@@ -66,8 +66,8 @@ const Header = () => {
                 <AddIcon />
               </IconButton>
             </Tooltip>
-            <Tooltip title="Manage Groups" onClick={navigateToGroup}>
-              <IconButton color="inherit" size="large">
+            <Tooltip title="Manage Groups" >
+              <IconButton color="inherit" size="large"onClick={navigateToGroup}>
                 <GroupIcon />
               </IconButton>
                 </Tooltip>
