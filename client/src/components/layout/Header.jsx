@@ -1,41 +1,45 @@
 /* eslint-disable no-unused-vars */
+import React, { useState } from 'react';
 import { AppBar, Box, Toolbar, Tooltip, Typography, IconButton } from '@mui/material';
-import React from 'react';
 import { orange } from '../../constants/color';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import AddIcon from '@mui/icons-material/Add';  
+import AddIcon from '@mui/icons-material/Add';
 import GroupIcon from '@mui/icons-material/Group';
 import { useNavigate } from 'react-router-dom';
 import { Logout } from '@mui/icons-material';
 
 const Header = () => {
   const navigate = useNavigate();
-  const [isMobile , setIsMobile] = useState(false);
-  const [isSearch , setIsSearch] = useState(false);
-  const [isNewGroup , setIsNewGroup] = useState(false);
-  cosnt[isNotifications , setIsNotifications] = useState(false);
+
+  // State hooks for handling UI logic
+  const [isMobile, setIsMobile] = useState(false);
+  const [isSearch, setIsSearch] = useState(false);
+  const [isNewGroup, setIsNewGroup] = useState(false);
+  const [isNotifications, setIsNotifications] = useState(false);
+
+  // Handlers
   const handleMobile = () => {
-    setIsMobile(prev=>!prev);
+    setIsMobile((prev) => !prev);
   };
 
-  const openSearchDialog = () => {  
-    setIsSearch(prev=>!prev);
+  const openSearchDialog = () => {
+    setIsSearch((prev) => !prev);
   };
 
-  const openNewGroup = () => {  
-    setIsNewGroup(prev=>!prev);
+  const openNewGroup = () => {
+    setIsNewGroup((prev) => !prev);
   };
 
   const openNotifications = () => {
-    setIsNotifications(prev=>!prev);
-  }
-  
- 
-  const navigateToGroup = () => navigate(" /Groups");
-     const LogoutHandler = () =>  {
-       console.log("LogoutHandler");
-     }
+    setIsNotifications((prev) => !prev);
+  };
+
+  const navigateToGroup = () => navigate("/Groups");
+
+  const LogoutHandler = () => {
+    console.log("LogoutHandler");
+  };
 
   return (
     <Box sx={{ flexGrow: 1 }} height={"4rem"}>
@@ -46,6 +50,7 @@ const Header = () => {
         }}
       >
         <Toolbar>
+          {/* Logo or title */}
           <Typography
             variant="h6"
             sx={{
@@ -54,6 +59,8 @@ const Header = () => {
           >
             chattu
           </Typography>
+
+          {/* Mobile Menu Button */}
           <Box
             sx={{
               display: { xs: 'block', sm: 'none' },
@@ -63,18 +70,20 @@ const Header = () => {
               <MenuIcon />
             </IconButton>
           </Box>
+
+          {/* Spacer for alignment */}
           <Box
             sx={{
               flexGrow: 1,
             }}
           />
+
+          {/* Action Buttons */}
           <Box>
             <IconBtn title="Search" icons={<SearchIcon />} onClick={openSearchDialog} />
-            <IconBtn title="Open new group" icons={<AddIcon />} onClick={openNewGroup} />
-       
+            <IconBtn title="Open New Group" icons={<AddIcon />} onClick={openNewGroup} />
             <IconBtn title="Manage Groups" icons={<GroupIcon />} onClick={navigateToGroup} />
             <IconBtn title="Logout" icons={<Logout />} onClick={LogoutHandler} />
-            
           </Box>
         </Toolbar>
       </AppBar>
@@ -82,6 +91,7 @@ const Header = () => {
   );
 };
 
+// Icon Button Component
 const IconBtn = ({ title, icons, onClick }) => {
   return (
     <Tooltip title={title}>
