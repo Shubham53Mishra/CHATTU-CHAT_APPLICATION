@@ -8,6 +8,7 @@ import AddIcon from '@mui/icons-material/Add';
 import GroupIcon from '@mui/icons-material/Group';
 import { useNavigate } from 'react-router-dom';
 import { Logout, Notifications } from '@mui/icons-material';
+import SearchDialog from '../specific/Search'; // Ensure this component exists and is correctly implemented.
 
 const Header = () => {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ const Header = () => {
     setIsMobile((prev) => !prev);
   };
 
-  const openSearch = () => {
+  const toggleSearchDialog = () => {
     setIsSearch((prev) => !prev);
   };
 
@@ -42,60 +43,60 @@ const Header = () => {
   };
 
   return (
-    <Box sx={{ flexGrow: 1 }} height={"4rem"}>
-      <AppBar
-        position="static"
-        sx={{
-          bgcolor: orange,
-        }}
-      >
-        <Toolbar>
-          {/* Logo or title */}
-          <Typography
-            variant="h6"
-            sx={{
-              display: { xs: 'none', sm: 'block' },
-            }}
-          >
-            chattu
-          </Typography>
+    <>
+      <Box sx={{ flexGrow: 1 }} height={"4rem"}>
+        <AppBar
+          position="static"
+          sx={{
+            bgcolor: orange,
+          }}
+        >
+          <Toolbar>
+            {/* Logo or title */}
+            <Typography
+              variant="h6"
+              sx={{
+                display: { xs: 'none', sm: 'block' },
+              }}
+            >
+              chattu
+            </Typography>
 
-          {/* Mobile Menu Button */}
-          <Box
-            sx={{
-              display: { xs: 'block', sm: 'none' },
-            }}
-          >
-            <IconButton color="inherit" onClick={handleMobile}>
-              <MenuIcon />
-            </IconButton>
-          </Box>
+            {/* Mobile Menu Button */}
+            <Box
+              sx={{
+                display: { xs: 'block', sm: 'none' },
+              }}
+            >
+              <IconButton color="inherit" onClick={handleMobile}>
+                <MenuIcon />
+              </IconButton>
+            </Box>
 
-          {/* Spacer for alignment */}
-          <Box
-            sx={{
-              flexGrow: 1,
-            }}
-          />
+            {/* Spacer for alignment */}
+            <Box
+              sx={{
+                flexGrow: 1,
+              }}
+            />
 
-          {/* Action Buttons */}
-          <Box>
-            <IconBtn title="Search" icons={<SearchIcon />} onClick={openSearch} />
-            <IconBtn title="Open New Group" icons={<AddIcon />} onClick={openNewGroup} />
-            <IconBtn title="Manage Groups" icons={<GroupIcon />} onClick={navigateToGroup} />
-            <IconBtn title="Notifications" icons={<Notifications />} onClick={openNotifications} />
-            <IconBtn title="Logout" icons={<Logout />} onClick={LogoutHandler} />
-          </Box>
-        </Toolbar>
-      </AppBar>
-    </Box>
+            {/* Action Buttons */}
+            <Box>
+              <IconBtn title="Search" icons={<SearchIcon />} onClick={toggleSearchDialog} />
+              <IconBtn title="Open New Group" icons={<AddIcon />} onClick={openNewGroup} />
+              <IconBtn title="Manage Groups" icons={<GroupIcon />} onClick={navigateToGroup} />
+              <IconBtn title="Notifications" icons={<Notifications />} onClick={openNotifications} />
+              <IconBtn title="Logout" icons={<Logout />} onClick={LogoutHandler} />
+            </Box>
+          </Toolbar>
+        </AppBar>
+      </Box>
+
+      {/* Render Search Dialog if isSearch is true */}
+      {isSearch && <SearchDialog  />}
+    </>
   );
 };
-{
-  isSearch && (
-    
-  );
-}
 
 // Icon Button Component
 const IconBtn = ({ title, icons, onClick }) => {
