@@ -1,56 +1,58 @@
 /* eslint-disable no-unused-vars */
-import React, { Suspense, useState } from 'react';
+import React, { lazy, Suspense, useState } from 'react';
 import { AppBar, Box, Toolbar, Tooltip, Typography, IconButton } from '@mui/material';
 import { orange } from '../../constants/color';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import GroupIcon from '@mui/icons-material/Group';
-import { useNavigate } from 'react-router-dom';
 import { Logout, Notifications } from '@mui/icons-material';
-import SearchDialog from '../specific/Search'; // Ensure this component exists and is correctly implemented.
-import { Sear } from '@mui/icons-material/Menu';
+import { useNavigate } from 'react-router-dom';
 
-
+// Lazy-loaded components
 const SearchDialog = lazy(() => import('../specific/Search'));
 const NewGroupDialog = lazy(() => import('../specific/NewGroup'));
 const NotificationsDialog = lazy(() => import('../specific/Notifications'));
-const Header = () => {import { lazy } from 'react';
 
+// Reusable Icon Button Component
+const IconBtn = ({ title, icons, onClick }) => {
+  return (
+    <Tooltip title={title}>
+      <IconButton color="inherit" size="large" onClick={onClick}>
+        {icons}
+      </IconButton>
+    </Tooltip>
+  );
+};
+
+const Header = () => {
   const navigate = useNavigate();
 
-  // State hooks for handling UI logic
+  // State hooks for UI logic
   const [isMobile, setIsMobile] = useState(false);
   const [isSearch, setIsSearch] = useState(false);
   const [isNewGroup, setIsNewGroup] = useState(false);
   const [isNotifications, setIsNotifications] = useState(false);
 
   // Handlers
-  const handleMobile = () => {
-    setIsMobile((prev) => !prev);
-  };
+  const handleMobile = () => setIsMobile((prev) => !prev);
 
-  const toggleSearchDialog = () => {
-    setIsSearch((prev) => !prev);
-  };
+  const toggleSearchDialog = () => setIsSearch((prev) => !prev);
 
-  const openNewGroup = () => {
-    setIsNewGroup((prev) => !prev);
-  };
+  const toggleNewGroupDialog = () => setIsNewGroup((prev) => !prev);
 
-  const openNotifications = () => {
-    setIsNotifications((prev) => !prev);
-  };
+  const toggleNotificationsDialog = () => setIsNotifications((prev) => !prev);
 
-  const navigateToGroup = () => navigate("/Groups");
+  const navigateToGroup = () => navigate('/Groups');
 
   const LogoutHandler = () => {
-    console.log("LogoutHandler");
+    console.log('LogoutHandler');
+    // Add your logout functionality here
   };
 
   return (
     <>
-      <Box sx={{ flexGrow: 1 }} height={"4rem"}>
+      <Box sx={{ flexGrow: 1 }} height="4rem">
         <AppBar
           position="static"
           sx={{
@@ -58,7 +60,7 @@ const Header = () => {import { lazy } from 'react';
           }}
         >
           <Toolbar>
-            {/* Logo or title */}
+            {/* App Title */}
             <Typography
               variant="h6"
               sx={{
@@ -80,36 +82,31 @@ const Header = () => {import { lazy } from 'react';
             </Box>
 
             {/* Spacer for alignment */}
-            <Box
-              sx={{
-                flexGrow: 1,
-              }}
-            />
+            <Box sx={{ flexGrow: 1 }} />
 
             {/* Action Buttons */}
             <Box>
               <IconBtn title="Search" icons={<SearchIcon />} onClick={toggleSearchDialog} />
-              <IconBtn title="Open New Group" icons={<AddIcon />} onClick={openNewGroup} />
+              <IconBtn title="Open New Group" icons={<AddIcon />} onClick={toggleNewGroupDialog} />
               <IconBtn title="Manage Groups" icons={<GroupIcon />} onClick={navigateToGroup} />
-              <IconBtn title="Notifications" icons={<Notifications />} onClick={openNotifications} />
+              <IconBtn title="Notifications" icons={<Notifications />} onClick={toggleNotificationsDialog} />
               <IconBtn title="Logout" icons={<Logout />} onClick={LogoutHandler} />
             </Box>
           </Toolbar>
         </AppBar>
       </Box>
 
-      {/* Render Search Dialog if isSearch is true */}
-      {isSearch && <Suspense fallback={<div>Loading...</div>}><SearchDialog   /></Suspense>}
-
-      {/* Render NewGroup Dialog if isNewGroup is true */}
-      {isNewGroup && <Suspense fallback={<div>Loading...</div>}><NewGroupDialog /></Suspense>}
-
-      {/* Render Notifications Dialog if isNotifications is true */}
-      {isNotifications && <Suspense fallback={<div>Loading...</div>}><NotificationsDialog /></Suspense>}
+      {/* Render Dialogs Conditionally */}
+      <Suspense fallback={<div>Loading...</div>}>
+        {isSearch && <SearchDialog />}
+        {isNewGroup && <NewGroupDialog />}
+        {isNotifications && <NotificationsDialog />}
+      </Suspense>
     </>
   );
 };
 
+<<<<<<< HEAD
 // Icon Button Component
 const IconBtn = ({ title, icons, onClick }) => {
   return (
@@ -122,3 +119,6 @@ const IconBtn = ({ title, icons, onClick }) => {
 };
 
 export default Header;  
+=======
+export default Header;
+>>>>>>> 84c29aaa05f019ee307452764a1a2d1e65dc7aa6
