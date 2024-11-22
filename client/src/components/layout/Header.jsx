@@ -51,9 +51,11 @@ const Header = () => {
             }}
             />
             <Box>
-            <IconButton color="inherit" size='large' onClick={openSearchDialog}>
+             <Tooltip title="Search">
+                <IconButton color="inherit" size='large' onClick={openSearchDialog}>
                 <SearchIcon />
               </IconButton>
+              </Tooltip>
              <Tooltip title="Open new group">
                 <IconButton color="inherit" size='large' onClick={openNewGroup}>
                 <AddIcon />
