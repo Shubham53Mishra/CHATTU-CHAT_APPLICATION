@@ -100,6 +100,12 @@ const Header = () => {import { lazy } from 'react';
 
       {/* Render Search Dialog if isSearch is true */}
       {isSearch && <Suspense fallback={<div>Loading...</div>}><SearchDialog   /></Suspense>}
+
+      {/* Render NewGroup Dialog if isNewGroup is true */}
+      {isNewGroup && <Suspense fallback={<div>Loading...</div>}><NewGroupDialog /></Suspense>}
+
+      {/* Render Notifications Dialog if isNotifications is true */}
+      {isNotifications && <Suspense fallback={<div>Loading...</div>}><NotificationsDialog /></Suspense>}
     </>
   );
 };
