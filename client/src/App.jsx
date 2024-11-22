@@ -16,7 +16,7 @@ const NotFound = lazy(() => import('./pages/NotFound'));
 
 
 const App = () => {
-  const [user, setUser] = useState(true); // Start with user as false (not logged in)
+  const [user, setUser] = useState(true);  
 
   return (
     <BrowserRouter>
