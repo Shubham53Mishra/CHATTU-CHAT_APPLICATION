@@ -4,7 +4,8 @@ import React from 'react';
 import { orange } from '../../constants/color';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
-import AddIcon from '@mui/icons-material/Add'; // Corrected import
+import AddIcon from '@mui/icons-material/Add';  
+import GroupIcon from '@mui/icons-material/Group';
 
 const Header = () => {
   const handleMobile = () => {
@@ -61,6 +62,11 @@ const Header = () => {
                 <AddIcon />
               </IconButton>
             </Tooltip>
+            <Tooltip title="Manage Groups">
+              <IconButton color="inherit" size="large">
+                <GroupIcon />
+              </IconButton>
+                </Tooltip>
           </Box>
         </Toolbar>
       </AppBar>
