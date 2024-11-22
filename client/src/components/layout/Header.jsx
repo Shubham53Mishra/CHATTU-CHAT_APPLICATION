@@ -6,8 +6,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';  
 import GroupIcon from '@mui/icons-material/Group';
+import { useNavigate } from 'react-router-dom';
 
 const Header = () => {
+  const navigate = useNavigate();
   const handleMobile = () => {
     console.log("mobile");
   };
@@ -20,9 +22,9 @@ const Header = () => {
     console.log("openNewGroup");
   };
   
-  const navigateToGroup = () => {  
-    console.log("navigateToGroup");
-  };
+ 
+  const navigateToGroup = () => navigate("/groups");
+     
 
   return (
     <Box sx={{ flexGrow: 1 }} height={"4rem"}>
