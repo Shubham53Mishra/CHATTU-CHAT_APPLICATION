@@ -106,19 +106,4 @@ const Header = () => {
   );
 };
 
-<<<<<<< HEAD
-// Icon Button Component
-const IconBtn = ({ title, icons, onClick }) => {
-  return (
-    <Tooltip title={title}>
-      <IconButton color="inherit" size="large" onClick={onClick}>
-        {icons}
-      </IconButton>
-    </Tooltip>
-  );
-};
-
-export default Header;  
-=======
 export default Header;
->>>>>>> 84c29aaa05f019ee307452764a1a2d1e65dc7aa6
