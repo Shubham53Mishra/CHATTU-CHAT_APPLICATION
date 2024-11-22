@@ -11,17 +11,25 @@ import { Logout } from '@mui/icons-material';
 
 const Header = () => {
   const navigate = useNavigate();
+  const [isMobile , setIsMobile] = useState(false);
+  const [isSearch , setIsSearch] = useState(false);
+  const [isNewGroup , setIsNewGroup] = useState(false);
+  cosnt[isNotifications , setIsNotifications] = useState(false);
   const handleMobile = () => {
-    console.log("mobile");
+    setIsMobile(prev=>!prev);
   };
 
   const openSearchDialog = () => {  
-    console.log("openSearchDialog");
+    setIsSearch(prev=>!prev);
   };
 
   const openNewGroup = () => {  
-    console.log("openNewGroup");
+    setIsNewGroup(prev=>!prev);
   };
+
+  const openNotifications = () => {
+    setIsNotifications(prev=>!prev);
+  }
   
  
   const navigateToGroup = () => navigate(" /Groups");
