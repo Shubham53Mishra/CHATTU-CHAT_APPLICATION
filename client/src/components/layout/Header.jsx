@@ -7,6 +7,7 @@ import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';  
 import GroupIcon from '@mui/icons-material/Group';
 import { useNavigate } from 'react-router-dom';
+import { Logout } from '@mui/icons-material';
 
 const Header = () => {
   const navigate = useNavigate();
@@ -24,7 +25,9 @@ const Header = () => {
   
  
   const navigateToGroup = () => navigate(" /Groups");
-     
+     const LogoutHandler = () =>  {
+       console.log("LogoutHandler");
+     }
 
   return (
     <Box sx={{ flexGrow: 1 }} height={"4rem"}>
@@ -62,7 +65,7 @@ const Header = () => {
             <IconBtn title="Open new group" icons={<AddIcon />} onClick={openNewGroup} />
        
             <IconBtn title="Manage Groups" icons={<GroupIcon />} onClick={navigateToGroup} />
-           
+            <IconBtn title="Logout" icons={<Logout />} onClick={LogoutHandler} />
             
           </Box>
         </Toolbar>
