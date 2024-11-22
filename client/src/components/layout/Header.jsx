@@ -91,6 +91,11 @@ const Header = () => {
     </Box>
   );
 };
+{
+  isSearch && (
+    
+  );
+}
 
 // Icon Button Component
 const IconBtn = ({ title, icons, onClick }) => {
