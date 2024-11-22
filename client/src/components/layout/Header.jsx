@@ -23,7 +23,7 @@ const Header = () => {
   };
   
  
-  const navigateToGroup = () => navigate("/groups");
+  const navigateToGroup = () => navigate(" /Groups");
      
 
   return (
@@ -79,5 +79,16 @@ const Header = () => {
     </Box>
   );
 };
+
+const IconBtn ={{title,icons,onClick}} => {
+  return (
+    <Tooltip title={title}>
+    <IconButton color="inherit" size="large" onClick={onClick}>
+      {icons}
+    </IconButton>
+  </Tooltip>
+
+  )
+}
 
 export default Header;
