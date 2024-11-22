@@ -58,21 +58,12 @@ const Header = () => {
             }}
           />
           <Box>
-            <Tooltip title="Search">
-              <IconButton color="inherit" size="large" onClick={openSearchDialog}>
-                <SearchIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Open new group">
-              <IconButton color="inherit" size="large" onClick={openNewGroup}>
-                <AddIcon />
-              </IconButton>
-            </Tooltip>
-            <Tooltip title="Manage Groups" >
-              <IconButton color="inherit" size="large"onClick={navigateToGroup}>
-                <GroupIcon />
-              </IconButton>
-                </Tooltip>
+            <IconBtn title="Search" icons={<SearchIcon />} onClick={openSearchDialog} />
+            <IconBtn title="Open new group" icons={<AddIcon />} onClick={openNewGroup} />
+       
+            <IconBtn title="Manage Groups" icons={<GroupIcon />} onClick={navigateToGroup} />
+           
+            
           </Box>
         </Toolbar>
       </AppBar>
@@ -80,15 +71,14 @@ const Header = () => {
   );
 };
 
-const IconBtn ={{title,icons,onClick}} => {
+const IconBtn = ({ title, icons, onClick }) => {
   return (
     <Tooltip title={title}>
-    <IconButton color="inherit" size="large" onClick={onClick}>
-      {icons}
-    </IconButton>
-  </Tooltip>
-
-  )
-}
+      <IconButton color="inherit" size="large" onClick={onClick}>
+        {icons}
+      </IconButton>
+    </Tooltip>
+  );
+};
 
 export default Header;
