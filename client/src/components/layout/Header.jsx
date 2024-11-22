@@ -1,5 +1,5 @@
 /* eslint-disable no-unused-vars */
-import React, { useState } from 'react';
+import React, { Suspense, useState } from 'react';
 import { AppBar, Box, Toolbar, Tooltip, Typography, IconButton } from '@mui/material';
 import { orange } from '../../constants/color';
 import MenuIcon from '@mui/icons-material/Menu';
@@ -9,8 +9,14 @@ import GroupIcon from '@mui/icons-material/Group';
 import { useNavigate } from 'react-router-dom';
 import { Logout, Notifications } from '@mui/icons-material';
 import SearchDialog from '../specific/Search'; // Ensure this component exists and is correctly implemented.
+import { Sear } from '@mui/icons-material/Menu';
 
-const Header = () => {
+
+const SearchDialog = lazy(() => import('../specific/Search'));
+const NewGroupDialog = lazy(() => import('../specific/NewGroup'));
+const NotificationsDialog = lazy(() => import('../specific/Notifications'));
+const Header = () => {import { lazy } from 'react';
+
   const navigate = useNavigate();
 
   // State hooks for handling UI logic
@@ -93,7 +99,7 @@ const Header = () => {
       </Box>
 
       {/* Render Search Dialog if isSearch is true */}
-      {isSearch && <SearchDialog  />}
+      {isSearch && <Suspense fallback={<div>Loading...</div>}><SearchDialog   /></Suspense>}
     </>
   );
 };
