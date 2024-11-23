@@ -17,7 +17,7 @@ import React from 'react'
       <Stack width={w} direction="column">
        {
          chats?.map (data=>{
-           return <div>sd</div>
+           return <div>{data}</div>
          })
       }
       </Stack>
