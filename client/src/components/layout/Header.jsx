@@ -1,12 +1,12 @@
 /* eslint-disable no-unused-vars */
 import React, { lazy, Suspense, useState } from 'react';
-import { AppBar, Box, Toolbar, Tooltip, Typography, IconButton } from '@mui/material';
+import { AppBar, Box, Toolbar, Tooltip, Typography, IconButton, Backdrop } from '@mui/material';
 import { orange } from '../../constants/color';
 import MenuIcon from '@mui/icons-material/Menu';
 import SearchIcon from '@mui/icons-material/Search';
 import AddIcon from '@mui/icons-material/Add';
 import GroupIcon from '@mui/icons-material/Group';
-import { Logout, Notifications } from '@mui/icons-material';
+import { BackHand, Logout, Notifications } from '@mui/icons-material';
 import { useNavigate } from 'react-router-dom';
 
 // Lazy-loaded components
@@ -96,12 +96,28 @@ const Header = () => {
         </AppBar>
       </Box>
 
-      {/* Render Dialogs Conditionally */}
-      <Suspense fallback={<div>Loading...</div>}>
-        {isSearch && <SearchDialog />}
-        {isNewGroup && <NewGroupDialog />}
-        {isNotifications && <NotificationsDialog />}
-      </Suspense>
+      
+      {
+        isSearch && (
+          <Suspense fallback={ <Backdrop open/>}>
+            <SearchDialog />
+          </Suspense>
+        )
+      }
+      {
+        isNewGroup && (
+          <Suspense fallback={ <Backdrop open/>}>
+            <NewGroupDialog />
+          </Suspense>
+        )
+      }
+      {
+        isNotifications && (
+          <Suspense fallback={ <Backdrop open/>}>
+            <NotificationsDialog />
+          </Suspense>
+        )
+      }
     </>
   );
 };
