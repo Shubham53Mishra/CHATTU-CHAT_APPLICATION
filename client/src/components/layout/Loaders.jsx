@@ -11,7 +11,7 @@ export const Loaders = () => {
   {/* Content for the second column */}
   <Stack spacing={"1rem"}>
     {Array.from({ length: 10 }).map((_, index) => (
-      <Skeleton key={index} variant="rectangular" height="5rem" />
+      <Skeleton key={index} variant="rounded" height="5rem" />
     ))}
   </Stack>
 </Grid>
