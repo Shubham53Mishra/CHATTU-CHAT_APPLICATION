@@ -1,4 +1,5 @@
- import React from 'react'
+ import { Stack } from '@mui/material';
+import React from 'react'
  const Chatlist = ({
     w = "100%", // Default width
     chats = [], // List of chats
