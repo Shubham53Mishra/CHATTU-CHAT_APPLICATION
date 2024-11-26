@@ -1,42 +1,60 @@
-import { Avatar, Stack, Typography } from '@mui/material'
-import React from 'react'
-import { Link } from  '../styles/StyledCompoents.jsx'
+/* eslint-disable react/prop-types */
+import React from 'react';
+import { Avatar, Stack, Typography, Box } from '@mui/material';
+import { Link } from '../styles/StyledCompoents.jsx';
 
-const Chatitem = () => {
-    Avatar = [],
-        name,
-        _id,
-        groupChat = false,
-        someSender,
-         isOnline
-         newMessagesAlert,
-         index=0,
-         handleDeleteChatOpen,
-    return (
-       <Link to={"/chat/chat/${_id}"} onContextMenu={(e) => handleDeleteChatOpen(e,_id,groupChat)}>
-        <div style={{display:"flex", gap:"1rem", position:"relative", alignItems:"center", padding:"1rem", backgroundColor: sameSender ? "black" : "upset",color:"samesender" ?"white" :"black", justifyContent:"space-between"}}>
-            <Stack>
-                <Typography>{name}</Typography>
-                {
-                    newMessagesAlert && (
-                        <Typography>{newMessagesAlert.count}New Messages</Typography> 
-                    )
-                }
-            </Stack>
-            {
-                isOnline && <Box{{
-                    position:"absolute",
-                    top:"0",
-                    right:"0",
-                    width:"1rem",
-                    height:"1rem",
-                    backgroundColor:"green",
-                    borderRadius:"50%"
-                }}/>
-            }
-        </div>
-       </Link>
-    )
-}
+const Chatitem = ({
+  name,
+  _id,
+  isOnline,
+  newMessagesAlert,
+  sameSender,
+  groupChat,
+  handleDeleteChatOpen
+}) => {
+  return (
+    <Link sx={{
+      padding: "0",
+    }}
+      to={`/chat/chat/${_id}`}
+      onContextMenu={(e) => handleDeleteChatOpen(e, _id, groupChat)}
+    >
+      <div
+        style={{
+          display: 'flex',
+          gap: '1rem',
+          alignItems: 'center',
+          padding: '1rem',
+          backgroundColor: sameSender ? 'black' : 'unset',
+          color: sameSender ? 'white' : 'unset',
+          position: 'relative',
+        }}
+      >
+        <Avatar alt={name} />
+        <Stack>
+          <Typography>{name}</Typography>
+          {newMessagesAlert?.count && (
+            <Typography>{newMessagesAlert.count} New Messages</Typography>
+          )}
 
-export default Chatitem
+        </Stack>
+        {isOnline && (
+          <Box
+            style={{
+              width: "10px",
+              height: "10px",
+              borderRadius: "50%",
+              backgroundColor: "green",
+              position: "absolute",
+              top: "50%",
+              right: "1rem",
+              transform: "translateY(-50%)",
+            }}
+          />
+        )}
+      </div>
+    </Link>
+  );
+};
+
+export default React.memo(Chatitem);

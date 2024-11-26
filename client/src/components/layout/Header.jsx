@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 /* eslint-disable no-unused-vars */
 import React, { lazy, Suspense, useState } from 'react';
 import { AppBar, Box, Toolbar, Tooltip, Typography, IconButton, Backdrop } from '@mui/material';

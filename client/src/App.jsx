@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import React, { lazy, Suspense, useState } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import ProtectRoute from './components/auth/ProtectRoute';
