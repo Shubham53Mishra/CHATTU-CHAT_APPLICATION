@@ -1,6 +1,6 @@
 /* eslint-disable react/prop-types */
 import React from 'react';
-import { Avatar, Stack, Typography, Box } from '@mui/material';
+import { Avatar as MuiAvatar, Stack, Typography, Box } from '@mui/material';
 import { Link } from '../styles/StyledCompoents.jsx';
 
 const Chatitem = ({
@@ -10,12 +10,13 @@ const Chatitem = ({
   newMessagesAlert,
   sameSender,
   groupChat,
-  handleDeleteChatOpen
+  handleDeleteChatOpen,
 }) => {
   return (
-    <Link sx={{
-      padding: "0",
-    }}
+    <Link
+      sx={{
+        padding: '0',
+      }}
       to={`/chat/chat/${_id}`}
       onContextMenu={(e) => handleDeleteChatOpen(e, _id, groupChat)}
     >
@@ -30,25 +31,24 @@ const Chatitem = ({
           position: 'relative',
         }}
       >
-        <Avatar alt={name} />
+        <MuiAvatar alt={name} />
         <Stack>
           <Typography>{name}</Typography>
-          {newMessagesAlert?.count && (
+          {newMessagesAlert?.count > 0 && (
             <Typography>{newMessagesAlert.count} New Messages</Typography>
           )}
-
         </Stack>
         {isOnline && (
           <Box
             style={{
-              width: "10px",
-              height: "10px",
-              borderRadius: "50%",
-              backgroundColor: "green",
-              position: "absolute",
-              top: "50%",
-              right: "1rem",
-              transform: "translateY(-50%)",
+              width: '10px',
+              height: '10px',
+              borderRadius: '50%',
+              backgroundColor: 'green',
+              position: 'absolute',
+              top: '50%',
+              right: '1rem',
+              transform: 'translateY(-50%)',
             }}
           />
         )}
